@@ -9,12 +9,15 @@
     <title></title>
 </head>
 <body>
-    <form autocomplete="off" action="/action_page.php">
-        <div class="autocomplete" style="width:300px;">
-          <input id="myInput" type="text" name="myCountry" placeholder="Ingredient">
+    <form autocomplete="off">
+        <div class="ingredients" >
+          <input id="ingredient1" type="text" placeholder="Ingredient 1">
+          <input id="ingredient2" type="text" placeholder="Ingredient 2">
+          <input id="ingredient3" type="text" placeholder="Ingredient 3">
         </div>
-        <input type="submit">
+        <button id="submitIngredients" type="button">Submit</button>
       </form>
 </body>
-<script src="main.js"></script>
+<script type="module" src="./main.js"></script>
+<script type="module" src="./autocomplete.js"></script>
 </html>

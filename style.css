@@ -2,12 +2,14 @@
 body {
   font: 16px Arial;
 }
-.autocomplete {
+.ingredients {
   /*the container must be positioned relative:*/
   position: relative;
-  display: inline-block;
+  display: flex;
+  justify-content: space-between;
 }
 input {
+  max-width: 300px;
   border: 1px solid transparent;
   background-color: #f1f1f1;
   padding: 10px;
@@ -17,7 +19,7 @@ input[type=text] {
   background-color: #f1f1f1;
   width: 100%;
 }
-input[type=submit] {
+#submitIngredients {
   background-color: DodgerBlue;
   color: #fff;
 }
