@@ -40,6 +40,7 @@ input[type=text] {
   cursor: pointer;
   background-color: #fff;
   border-bottom: 1px solid #d4d4d4;
+  max-width: 300px;
 }
 .autocomplete-items div:hover {
   /*when hovering an item:*/

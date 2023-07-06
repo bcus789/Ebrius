@@ -15,7 +15,7 @@ const cocktails = {
         "/filter.php?i=" + ingredient1 + ingredient2 + ingredient3)
         .then((response) => response.json())
         // .then((data) =>  console.log(data))
-        .then((data) =>  this.cocktailLookup(data.drinks))
+        .then((data) =>  drinkCheck(data))
         .catch((error) => {
             console.log(error)
           })
@@ -69,5 +69,14 @@ submitButton.addEventListener("click", function(){
     if(ing3.value != ""){
         ingredient3 = "," + ing3.value
     }
+    console.log(ingredient1, ingredient2, ingredient3)
     cocktails.fetchCocktails(ingredient1, ingredient2, ingredient3)
 })
+
+function drinkCheck(data) {
+    if (data.drinks === 'None Found'){
+        console.log("No Drinks Found")
+    } else {
+        cocktails.cocktailLookup(data.drinks)
+    }
+}
