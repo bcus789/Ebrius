@@ -10,12 +10,15 @@
 </head>
 <body>
     <form autocomplete="off">
-        <button id="submitIngredients" type="button">Submit</button>
-        <div class="ingredients" >
-          <input id="ingredient1" type="text" placeholder="Ingredient 1">
-          <input id="ingredient2" type="text" placeholder="Ingredient 2">
-          <input id="ingredient3" type="text" placeholder="Ingredient 3">
+        <div id="buttons">
+        <button id="submitIngredients" type="button">Add Ingredient</button>
+        <button id="findCocktails" type="button">Find Cocktails</button>
+        <button id="clearIngredients" type="button">Clear</button>
         </div>
+        <div class="ingredients" >
+          <input id="ingredient" type="text" placeholder="Ingredient 1">
+        </div>
+        <ul id="ingredientsList"></ul>
       </form>
 </body>
 <script type="module" src="./main.js"></script>

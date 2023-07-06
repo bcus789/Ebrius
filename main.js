@@ -2,17 +2,19 @@ import { autocomplete } from './autocomplete.js'
 
 let submitButton = document.getElementById("submitIngredients")
 let ingredientsArr = []
+let cocktailIngredients = []
+let clearIngredients = document.getElementById("clearIngredients")
 
-const ing1 = document.getElementById("ingredient1")
-const ing2 = document.getElementById("ingredient2")
-const ing3 = document.getElementById("ingredient3")
+const ingredientsList = document.getElementById("ingredientsList")
+const findCocktailsButton = document.getElementById("findCocktails")
+const ingredient = document.getElementById("ingredient")
 
 const cocktails = {
     "apiKey": '9973533',
-    fetchCocktails: function(ingredient1, ingredient2, ingredient3){
+    fetchCocktails: function(ingredients){
         fetch("https:/www.thecocktaildb.com/api/json/v2/"
         + this.apiKey +
-        "/filter.php?i=" + ingredient1 + ingredient2 + ingredient3)
+        "/filter.php?i=" + ingredients[0])
         .then((response) => response.json())
         // .then((data) =>  console.log(data))
         .then((data) =>  drinkCheck(data))
@@ -52,26 +54,8 @@ const cocktails = {
 
 cocktails.ingredientLookup()
 
-autocomplete(document.getElementById("ingredient1"), ingredientsArr);
-autocomplete(document.getElementById("ingredient2"), ingredientsArr);
-autocomplete(document.getElementById("ingredient3"), ingredientsArr);
+autocomplete(document.getElementById("ingredient"), ingredientsArr);
 
-// cocktails.fetchCocktails("Dry_Vermouth", "Gin", "olive")
-
-
-submitButton.addEventListener("click", function(){
-    let ingredient1 = ing1.value
-    let ingredient2 = ing2.value
-    let ingredient3 = ing3.value
-    if(ing2.value != ""){
-        ingredient2 = "," + ing2.value
-    }
-    if(ing3.value != ""){
-        ingredient3 = "," + ing3.value
-    }
-    console.log(ingredient1, ingredient2, ingredient3)
-    cocktails.fetchCocktails(ingredient1, ingredient2, ingredient3)
-})
 
 function drinkCheck(data) {
     if (data.drinks === 'None Found'){
@@ -80,3 +64,22 @@ function drinkCheck(data) {
         cocktails.cocktailLookup(data.drinks)
     }
 }
+
+submitButton.addEventListener("click", function(){
+    cocktailIngredients.push(ingredient.value)
+    ingredientsList.innerText = ""
+    for (let i = 0; i < cocktailIngredients.length; i++){
+        ingredientsList.innerHTML += `<li>${cocktailIngredients[i]}</li>`
+    }
+    console.log(cocktailIngredients)
+})
+
+
+findCocktailsButton.addEventListener("click", function(){
+    cocktails.fetchCocktails(cocktailIngredients)
+})
+
+clearIngredients.addEventListener("click", function(){
+    ingredientsList.innerText = ""
+    cocktailIngredients = []
+})

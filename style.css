@@ -2,11 +2,15 @@
 body {
   font: 16px Arial;
 }
+#buttons{
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+}
 .ingredients {
   /*the container must be positioned relative:*/
   position: relative;
-  display: flex;
-  justify-content: space-around;
+  margin-top: 10px;
 }
 input {
   max-width: 300px;
