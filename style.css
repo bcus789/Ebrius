@@ -6,7 +6,7 @@ body {
   /*the container must be positioned relative:*/
   position: relative;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 input {
   max-width: 300px;
@@ -22,6 +22,7 @@ input[type=text] {
 #submitIngredients {
   background-color: DodgerBlue;
   color: #fff;
+  margin: auto;
 }
 .autocomplete-items {
   position: absolute;
@@ -49,3 +50,4 @@ input[type=text] {
   background-color: DodgerBlue !important;
   color: #ffffff;
 }
+
