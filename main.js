@@ -12,7 +12,7 @@ const cocktails = {
     fetchCocktails: function(ingredient1, ingredient2, ingredient3){
         fetch("https:/www.thecocktaildb.com/api/json/v2/"
         + this.apiKey +
-        "/filter.php?i=" + ingredient1 + "," + ingredient2 + "," + ingredient3)
+        "/filter.php?i=" + ingredient1 + ingredient2 + ingredient3)
         .then((response) => response.json())
         // .then((data) =>  console.log(data))
         .then((data) =>  this.cocktailLookup(data.drinks))
@@ -60,5 +60,14 @@ autocomplete(document.getElementById("ingredient3"), ingredientsArr);
 
 
 submitButton.addEventListener("click", function(){
-    cocktails.fetchCocktails(ing1.value, ing2.value, ing3.value)
+    let ingredient1 = ing1.value
+    let ingredient2 = ing2.value
+    let ingredient3 = ing3.value
+    if(ing2.value != ""){
+        ingredient2 = "," + ing2.value
+    }
+    if(ing3.value != ""){
+        ingredient3 = "," + ing3.value
+    }
+    cocktails.fetchCocktails(ingredient1, ingredient2, ingredient3)
 })
