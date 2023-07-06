@@ -14,6 +14,9 @@ const cocktails = {
         "/filter.php?i=" + ingredient1 + "," + ingredient2 + "," + ingredient3)
         .then((response) => response.json())
         .then((data) => this.cocktailLookup(data.drinks[0].idDrink, data.drinks[1].idDrink))
+        .catch((error) => {
+            console.log(error)
+          })
     },
     cocktailLookup: function(id1, id2){
         fetch("https:/www.thecocktaildb.com/api/json/v2/"
@@ -22,6 +25,9 @@ const cocktails = {
         + id1)
         .then((response) => response.json())
         .then((data) => console.log(data))
+        .catch((error) => {
+            console.log(error)
+          })
 
         fetch("https:/www.thecocktaildb.com/api/json/v2/"
         + this.apiKey + 
@@ -29,6 +35,9 @@ const cocktails = {
         + id2)
         .then((response) => response.json())
         .then((data) => console.log(data))
+        .catch((error) => {
+            console.log(error)
+          })
     },
     ingredientLookup: function(){
         fetch("https:/www.thecocktaildb.com/api/json/v2/"
@@ -36,13 +45,16 @@ const cocktails = {
         "/list.php?i=list")
         .then((response) => response.json())
         .then((data) => this.pushIngredients(data))
+        .catch((error) => {
+            console.log(error)
+          })
     },
     pushIngredients: function(data){
         for (let i = 0; i<data.drinks.length; i++){
             ingredientsArr.push(data.drinks[i].strIngredient1)
             
         }
-    }
+    },
 
 }
 
@@ -52,8 +64,9 @@ autocomplete(document.getElementById("ingredient1"), ingredientsArr);
 autocomplete(document.getElementById("ingredient2"), ingredientsArr);
 autocomplete(document.getElementById("ingredient3"), ingredientsArr);
 
-cocktails.fetchCocktails("vodka", "olive")
+// cocktails.fetchCocktails("Dry_Vermouth", "Gin", "olive")
+
 
 submitButton.addEventListener("click", function(){
-    console.log(ing1.value, ing2.value)
+    cocktails.fetchCocktails(ing1.value, ing2.value, ing3.value)
 })
