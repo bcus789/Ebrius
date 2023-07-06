@@ -1,11 +1,11 @@
 import { autocomplete } from './autocomplete.js'
 
-let submitButton = document.getElementById("submitIngredients")
 let ingredientsArr = []
 let cocktailIngredients = []
 let ingredientsDiv = []
-let clearIngredients = document.getElementById("clearIngredients")
 
+const submitButton = document.getElementById("submitIngredients")
+const clearIngredients = document.getElementById("clearIngredients")
 const ingredientsList = document.getElementById("ingredientsList")
 const findCocktailsButton = document.getElementById("findCocktails")
 const ingredient = document.getElementById("ingredient")
@@ -52,13 +52,11 @@ const cocktails = {
         for (let i = 0; i<data.drinks.length; i++){
             ingredientsArr.push(data.drinks[i].strIngredient1)          
         }
+        autocomplete(document.getElementById("ingredient"), ingredientsArr);
     },
 }
 
 cocktails.ingredientLookup()
-
-autocomplete(document.getElementById("ingredient"), ingredientsArr);
-
 
 function drinkCheck(data) {
     if (data.drinks === 'None Found'){
