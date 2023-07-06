@@ -27,6 +27,7 @@ const cocktails = {
           })
     },
     cocktailLookup: function(drinksArr){
+        drinksDiv.innerText = ""
         for (let i = 0; i < drinksArr.length; i++){
         fetch("https:/www.thecocktaildb.com/api/json/v2/"
         + this.apiKey + 
