@@ -14,6 +14,7 @@ input {
   background-color: #f1f1f1;
   padding: 10px;
   font-size: 16px;
+
 }
 input[type=text] {
   background-color: #f1f1f1;
@@ -22,7 +23,7 @@ input[type=text] {
 #submitIngredients {
   background-color: DodgerBlue;
   color: #fff;
-  margin: auto;
+ 
 }
 .autocomplete-items {
   position: absolute;
@@ -32,8 +33,7 @@ input[type=text] {
   z-index: 99;
   /*position the autocomplete items to be the same width as the container:*/
   top: 100%;
-  left: 0;
-  right: 0;
+  width: 300px;
 }
 .autocomplete-items div {
   padding: 10px;
