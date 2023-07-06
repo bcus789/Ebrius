@@ -4,6 +4,7 @@ let ingredientsArr = []
 let cocktailIngredients = []
 let ingredientsDiv = []
 
+const drinksDiv = document.getElementById("drinks-div")
 const submitButton = document.getElementById("submitIngredients")
 const clearIngredients = document.getElementById("clearIngredients")
 const ingredientsList = document.getElementById("ingredientsList")
@@ -32,7 +33,8 @@ const cocktails = {
         "/lookup.php?i="
         + drinksArr[i].idDrink)
         .then((response) => response.json())
-        .then((data) => console.log(data))
+        // .then((data) => console.log(data))
+        .then((data) => this.renderDrinks(data))
         .catch((error) => {
             console.log(error)
           })
@@ -54,6 +56,25 @@ const cocktails = {
         }
         autocomplete(document.getElementById("ingredient"), ingredientsArr);
     },
+    renderDrinks: function(data){
+        drinksDiv.innerHTML += `
+        <li>
+        ${data.drinks[0].strDrink}
+        <ul>
+        <li>${data.drinks[0].strIngredient1
+        }</li>
+        <li>${data.drinks[0].strIngredient2
+        }</li>
+        <li>${data.drinks[0].strIngredient3
+        }</li>
+        <li>${data.drinks[0].strIngredient4
+        }</li>
+        <li>${data.drinks[0].strIngredient5
+        }</li>
+        </ul>
+        </li>
+        `
+    }
 }
 
 cocktails.ingredientLookup()
