@@ -3,6 +3,7 @@ import { autocomplete } from './autocomplete.js'
 let submitButton = document.getElementById("submitIngredients")
 let ingredientsArr = []
 let cocktailIngredients = []
+let ingredientsDiv = []
 let clearIngredients = document.getElementById("clearIngredients")
 
 const ingredientsList = document.getElementById("ingredientsList")
@@ -12,9 +13,11 @@ const ingredient = document.getElementById("ingredient")
 const cocktails = {
     "apiKey": '9973533',
     fetchCocktails: function(ingredients){
-        fetch("https:/www.thecocktaildb.com/api/json/v2/"
-        + this.apiKey +
-        "/filter.php?i=" + ingredients[0])
+        let url = "https:/www.thecocktaildb.com/api/json/v2/" + this.apiKey + "/filter.php?i="
+        for (let i = 0; i < ingredients.length; i++){
+            url += ingredients[i]
+        }
+        fetch(url)
         .then((response) => response.json())
         // .then((data) =>  console.log(data))
         .then((data) =>  drinkCheck(data))
@@ -66,12 +69,17 @@ function drinkCheck(data) {
 }
 
 submitButton.addEventListener("click", function(){
-    cocktailIngredients.push(ingredient.value)
+    if (cocktailIngredients.length === 0 ){
+        cocktailIngredients.push(ingredient.value)
+    } else {
+        cocktailIngredients.push("," + ingredient.value)
+    }
+    ingredientsDiv.push(ingredient.value)
+    ingredient.value = ""
     ingredientsList.innerText = ""
     for (let i = 0; i < cocktailIngredients.length; i++){
-        ingredientsList.innerHTML += `<li>${cocktailIngredients[i]}</li>`
+        ingredientsList.innerHTML += `<li>${ingredientsDiv[i]}</li>`
     }
-    console.log(cocktailIngredients)
 })
 
 
@@ -82,4 +90,6 @@ findCocktailsButton.addEventListener("click", function(){
 clearIngredients.addEventListener("click", function(){
     ingredientsList.innerText = ""
     cocktailIngredients = []
+    ingredientsDiv = []
 })
+
