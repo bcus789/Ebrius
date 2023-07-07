@@ -21,10 +21,18 @@ const cocktails = {
         fetch(url)
         .then((response) => response.json())
         // .then((data) =>  console.log(data))
-        .then((data) =>  drinkCheck(data))
+        .then((data) =>  this.drinkCheck(data))
         .catch((error) => {
             console.log(error)
           })
+    },
+    drinkCheck: function (data) {
+        if (data.drinks === 'None Found'){
+            drinksDiv.innerText = "No Drinks Found"
+            console.log("No Drinks Found")
+        } else {
+            cocktails.cocktailLookup(data.drinks)
+        }
     },
     cocktailLookup: function(drinksArr){
         drinksDiv.innerText = ""
@@ -34,12 +42,15 @@ const cocktails = {
         "/lookup.php?i="
         + drinksArr[i].idDrink)
         .then((response) => response.json())
-        // .then((data) => console.log(data))
-        .then((data) => this.renderDrinks(data))
+        .then((data) => console.log(data))
+        // .then((data) => this.renderDrinks(data))
         .catch((error) => {
             console.log(error)
           })
         }   
+    },
+    renderDrinks: function(data){
+        drinksDiv.innerHTML += `<li>${data.drinks[0].strDrink}</li>`
     },
     ingredientLookup: function(){
         fetch("https:/www.thecocktaildb.com/api/json/v2/"
@@ -56,37 +67,10 @@ const cocktails = {
             ingredientsArr.push(data.drinks[i].strIngredient1)          
         }
         autocomplete(document.getElementById("ingredient"), ingredientsArr);
-    },
-    renderDrinks: function(data){
-        drinksDiv.innerHTML += `
-        <li>
-        ${data.drinks[0].strDrink}
-        <ul>
-        <li>${data.drinks[0].strIngredient1
-        }</li>
-        <li>${data.drinks[0].strIngredient2
-        }</li>
-        <li>${data.drinks[0].strIngredient3
-        }</li>
-        <li>${data.drinks[0].strIngredient4
-        }</li>
-        <li>${data.drinks[0].strIngredient5
-        }</li>
-        </ul>
-        </li>
-        `
     }
 }
 
 cocktails.ingredientLookup()
-
-function drinkCheck(data) {
-    if (data.drinks === 'None Found'){
-        console.log("No Drinks Found")
-    } else {
-        cocktails.cocktailLookup(data.drinks)
-    }
-}
 
 submitButton.addEventListener("click", function(){
     if (cocktailIngredients.length === 0 ){
@@ -109,6 +93,7 @@ findCocktailsButton.addEventListener("click", function(){
 
 clearIngredients.addEventListener("click", function(){
     ingredientsList.innerText = ""
+    drinksDiv.innerText = ""
     cocktailIngredients = []
     ingredientsDiv = []
 })
