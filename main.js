@@ -42,8 +42,8 @@ const cocktails = {
         "/lookup.php?i="
         + drinksArr[i].idDrink)
         .then((response) => response.json())
-        .then((data) => console.log(data))
-        // .then((data) => renderDrinks(data))
+        // .then((data) => console.log(data))
+        .then((data) => renderDrinks(data))
         .catch((error) => {
             console.log(error)
           })
@@ -73,16 +73,20 @@ const cocktails = {
 cocktails.ingredientLookup()
 
 submitButton.addEventListener("click", function(){
-    if (cocktailIngredients.length === 0 ){
-        cocktailIngredients.push(ingredient.value)
+    if (ingredient.value === ""){
+        alert("Please enter an ingredient")
     } else {
-        cocktailIngredients.push("," + ingredient.value)
-    }
+        if (cocktailIngredients.length === 0 ){
+            cocktailIngredients.push(ingredient.value)
+        } else {
+            cocktailIngredients.push("," + ingredient.value)
+        }
     ingredientsDiv.push(ingredient.value)
     ingredient.value = ""
     ingredientsList.innerText = ""
     for (let i = 0; i < cocktailIngredients.length; i++){
         ingredientsList.innerHTML += `<li>${ingredientsDiv[i]}</li>`
+    }
     }
 })
 
