@@ -1,4 +1,5 @@
 import { autocomplete } from './autocomplete.js'
+import { renderDrinks } from './renderdrinks.js'
 
 let ingredientsArr = []
 let cocktailIngredients = []
@@ -20,7 +21,6 @@ const cocktails = {
         }
         fetch(url)
         .then((response) => response.json())
-        // .then((data) =>  console.log(data))
         .then((data) =>  this.drinkCheck(data))
         .catch((error) => {
             console.log(error)
@@ -43,14 +43,14 @@ const cocktails = {
         + drinksArr[i].idDrink)
         .then((response) => response.json())
         .then((data) => console.log(data))
-        // .then((data) => this.renderDrinks(data))
+        // .then((data) => renderDrinks(data))
         .catch((error) => {
             console.log(error)
           })
         }   
     },
     renderDrinks: function(data){
-        drinksDiv.innerHTML += `<li>${data.drinks[0].strDrink}</li>`
+        drinksDiv.innerHTML += `<li>${data.drinks[0].strDrink}</li><ul><li></li></ul>`
     },
     ingredientLookup: function(){
         fetch("https:/www.thecocktaildb.com/api/json/v2/"
@@ -85,7 +85,6 @@ submitButton.addEventListener("click", function(){
         ingredientsList.innerHTML += `<li>${ingredientsDiv[i]}</li>`
     }
 })
-
 
 findCocktailsButton.addEventListener("click", function(){
     cocktails.fetchCocktails(cocktailIngredients)
