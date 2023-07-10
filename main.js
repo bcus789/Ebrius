@@ -61,7 +61,7 @@ const cocktails = {
     },
     pushIngredients: function (data) {
         for (let i = 0; i < data.drinks.length; i++) {
-            ingredientsArr.push(data.drinks[i].strIngredient1.toUpperCase())
+            ingredientsArr.push(data.drinks[i].strIngredient1.toLowerCase())
         }
         autocomplete(document.getElementById("ingredient"), ingredientsArr);
     }
@@ -79,7 +79,7 @@ ingredient.addEventListener("keyup", function(event){
 submitButton.addEventListener("click", function () {
     if (ingredient.value === "") {
         alert("Please enter a valid ingredient")
-    } else if (ingredientsArr.includes(ingredient.value.toUpperCase())) {
+    } else if (ingredientsArr.includes(ingredient.value.toLowerCase())) {
         if (cocktailIngredients.length === 0) {
             cocktailIngredients.push(ingredient.value)
         } else {
