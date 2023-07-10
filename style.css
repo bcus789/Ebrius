@@ -22,6 +22,7 @@ button{
     padding: 10px;
     font-family: 'Open Sans', sans-serif;
     margin-left: 5px;
+    margin-bottom: 2em;
     border: none;
     background: #7c7c7c2b;
     color: whitesmoke;
@@ -45,6 +46,7 @@ input {
   font-size: 16px;
   border-radius: 30px;
   border: none;
+  margin-bottom: 10px;
 }
 input[type=text] {
   background-color: #f1f1f1;
@@ -105,10 +107,7 @@ img {
 #main-div{
   background: #000000d0;
    color: whitesmoke;
-   padding-top: 2em;
-   padding-left: 2em;
-   padding-right: 2em;
-   padding-bottom: 8px;
+   padding: 2em;
    border-radius: 30px;
    width: 100%;
    max-width: 364px;
@@ -116,6 +115,7 @@ img {
    text-align: center;
    max-height: 600px;
    margin-top: -30px;
+   margin-top: 30px;
 }
 
 #drinks-div::-webkit-scrollbar {
