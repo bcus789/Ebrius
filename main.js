@@ -49,9 +49,6 @@ const cocktails = {
                 })
         }
     },
-    renderDrinks: function (data) {
-        drinksDiv.innerHTML += `<li>${data.drinks[0].strDrink}</li><ul><li></li></ul>`
-    },
     ingredientLookup: function () {
         fetch("https://www.thecocktaildb.com/api/json/v2/"
             + this.apiKey +
@@ -85,7 +82,7 @@ submitButton.addEventListener("click", function () {
         ingredient.value = ""
         ingredientsList.innerText = ""
         for (let i = 0; i < cocktailIngredients.length; i++) {
-            ingredientsList.innerHTML += `<li>${ingredientsDiv[i]}</li>`
+            ingredientsList.innerHTML += `<p>${ingredientsDiv[i]}</p>`
         }
     }
 })
@@ -95,8 +92,8 @@ findCocktailsButton.addEventListener("click", function () {
 })
 
 clearIngredients.addEventListener("click", function () {
-    ingredientsList.innerText = ""
-    drinksDiv.innerText = ""
+    ingredientsList.innerHTML = `<p>No Ingredients Added</p>`
+    drinksDiv.innerText = "Search Ingredients"
     cocktailIngredients = []
     ingredientsDiv = []
 })

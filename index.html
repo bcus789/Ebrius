@@ -5,10 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
    
     <title></title>
 </head>
 <body>
+    <div id="main-div">
     <form autocomplete="off">
         <div id="buttons">
         <button id="submitIngredients" type="button">Add Ingredient</button>
@@ -18,10 +20,12 @@
         <div class="ingredients" >
           <input id="ingredient" type="text" placeholder="Ingredient">
         </div>
+        <h3>Ingredients</h3>
+        <div id="ingredientsList"><p>No Ingredients Added</p></div>
     </form>
-    <ul id="ingredientsList"></ul>
+</div>
     <div id="drinks-div">
-        
+        Search Ingredients
     </div>
 </body>
 <script type="module" src="./main.js"></script>
