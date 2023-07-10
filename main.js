@@ -15,7 +15,7 @@ const ingredient = document.getElementById("ingredient")
 const cocktails = {
     "apiKey": '9973533',
     fetchCocktails: function (ingredients) {
-        let url = "https:/www.thecocktaildb.com/api/json/v2/" + this.apiKey + "/filter.php?i="
+        let url = "https://www.thecocktaildb.com/api/json/v2/" + this.apiKey + "/filter.php?i="
         for (let i = 0; i < ingredients.length; i++) {
             url += ingredients[i]
         }
@@ -37,7 +37,7 @@ const cocktails = {
     cocktailLookup: function (drinksArr) {
         drinksDiv.innerText = ""
         for (let i = 0; i < drinksArr.length; i++) {
-            fetch("https:/www.thecocktaildb.com/api/json/v2/"
+            fetch("https://www.thecocktaildb.com/api/json/v2/"
                 + this.apiKey +
                 "/lookup.php?i="
                 + drinksArr[i].idDrink)
@@ -53,7 +53,7 @@ const cocktails = {
         drinksDiv.innerHTML += `<li>${data.drinks[0].strDrink}</li><ul><li></li></ul>`
     },
     ingredientLookup: function () {
-        fetch("https:/www.thecocktaildb.com/api/json/v2/"
+        fetch("https://www.thecocktaildb.com/api/json/v2/"
             + this.apiKey +
             "/list.php?i=list")
             .then((response) => response.json())
