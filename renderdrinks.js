@@ -2,7 +2,9 @@ const drinksDiv = document.getElementById("drinks-div")
 const ingredientsDiv = document.getElementById("ingredients-div")
 
 function renderDrinks(data){
-    drinksDiv.innerHTML += `<li>${data.drinks[0].strDrink}</li>`
+    drinksDiv.innerHTML += `<img src="${data.drinks[0].strDrinkThumb
+    }"></img>`
+    drinksDiv.innerHTML += `<b><p>${data.drinks[0].strDrink}</p></b>`
     if (data.drinks[0].strIngredient1 != null){
         drinksDiv.innerHTML += `<ul><li>${data.drinks[0].strMeasure1
         } ${data.drinks[0].strIngredient1}</li></ul>`}
