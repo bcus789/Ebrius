@@ -1,5 +1,4 @@
 const drinksDiv = document.getElementById("drinks-div")
-const ingredientsDiv = document.getElementById("ingredients-div")
 
 function renderDrinks(data){
     drinksDiv.innerHTML += `<b><p style="color:red">${data.drinks[0].strDrink}</p></b>`
