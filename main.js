@@ -95,7 +95,12 @@ submitButton.addEventListener("click", function () {
 })
 
 findCocktailsButton.addEventListener("click", function () {
-    cocktails.fetchCocktails(cocktailIngredients)
+    if (cocktailIngredients.length != 0){
+        cocktails.fetchCocktails(cocktailIngredients)
+    } else {
+        alert("Please add at least one ingredient")
+    }
+    
 })
 
 clearIngredients.addEventListener("click", function () {
