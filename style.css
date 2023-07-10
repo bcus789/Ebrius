@@ -3,6 +3,13 @@ body {
   font: 16px Arial;
   font-family: 'Open Sans', sans-serif;
   background-color: #222222;
+  text-align: center;
+  color: whitesmoke;
+}
+
+#title{
+  max-width: 364px;
+  margin: auto;
 }
 #buttons{
   width: 300px;
@@ -101,14 +108,14 @@ img {
    padding-top: 2em;
    padding-left: 2em;
    padding-right: 2em;
-   padding-bottom: 5px;
+   padding-bottom: 8px;
    border-radius: 30px;
    width: 100%;
    max-width: 364px;
    margin: auto;
-   margin-top: 30px;
    text-align: center;
    max-height: 600px;
+   margin-top: -30px;
 }
 
 #drinks-div::-webkit-scrollbar {
@@ -130,4 +137,8 @@ img {
 
 #ingredientsList{
 color: #ff2a2a;
+}
+
+h2{
+  margin-bottom: 2em;
 }
