@@ -69,6 +69,13 @@ const cocktails = {
 
 cocktails.ingredientLookup()
 
+ingredient.addEventListener("keyup", function(event){
+    if (event.key == "Enter"){
+        event.preventDefault()
+        submitButton.click()
+    }
+})
+
 submitButton.addEventListener("click", function () {
     if (ingredient.value === "") {
         alert("Please enter an ingredient")
