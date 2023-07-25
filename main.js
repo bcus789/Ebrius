@@ -89,7 +89,16 @@ submitButton.addEventListener("click", function () {
         ingredient.value = ""
         ingredientsList.innerText = ""
         for (let i = 0; i < cocktailIngredients.length; i++) {
-            ingredientsList.innerHTML += `<p>${ingredientsDiv[i]}</p>`
+            const listItem = document.createElement("p")
+            listItem.innerText = ingredientsDiv[i]
+            listItem.classList.add(i)
+            const deleteBtn = document.createElement("button")
+            deleteBtn.textContent = "x"
+            deleteBtn.setAttribute("class", "deleteBtn")
+            listItem.appendChild(deleteBtn)
+            ingredientsList.appendChild(listItem)
+            let deleteBtns = document.querySelectorAll(".deleteBtn")
+            assignDelete(deleteBtns, i)
         }
     } else {
         alert("Please enter a valid ingredient") 
@@ -111,4 +120,13 @@ clearIngredients.addEventListener("click", function () {
     cocktailIngredients = []
     ingredientsDiv = []
 })
+
+function assignDelete(buttons, index){
+    buttons.forEach((btn) => btn.addEventListener("click", function(e){
+        e.currentTarget.parentElement.remove()
+        cocktailIngredients.splice(index, 1)
+        ingredientsDiv.splice(index, 1)
+    }))
+}
+
 
