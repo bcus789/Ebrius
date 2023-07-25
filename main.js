@@ -126,6 +126,7 @@ function assignDelete(buttons, index){
         e.currentTarget.parentElement.remove()
         cocktailIngredients.splice(index, 1)
         ingredientsDiv.splice(index, 1)
+        console.log(ingredientsDiv)
     }))
 }
 
